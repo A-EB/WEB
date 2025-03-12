@@ -1,0 +1,53 @@
+h1 {
+    background-color: #2a2a9e;
+    color: rgb(251, 255, 0);
+    font-style: italic;
+    text-align: center;
+    border-radius: 8px;
+    border: 1px solid black;
+  
+  }
+  
+h2 {
+    color: yellow;
+    font-style: italic;
+  }
+
+form {
+    background-color: #2a2a9e;
+    color: rgb(53, 35, 35);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 300px;
+    border: 2px solid black;
+    background-size: 100%;
+  }
+
+.container {
+    justify-content: center;
+    display: flex;
+    gap: 20px;
+  }
+
+button {
+    width: 45%;
+    padding: 8px;
+    margin: 5px;
+    background-color: rgb(255, 64, 64);
+    color: black;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+.deconnexion{
+    width: 100%;
+    padding: 8px;
+    border-radius: 30px;
+  }
+
+.menu{
+    width: 5%;
+}

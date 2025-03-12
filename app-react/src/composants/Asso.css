@@ -1,0 +1,83 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: rgb(58, 60, 165);
+    border-bottom: 2px solid #000000;
+    color: rgb(53, 35, 35);
+}
+
+.search{
+    padding: 10px;
+    display: flex;
+    gap: 5px;
+    border-radius: 30px;
+}
+
+main {
+    display: flex;
+    margin: 20px;
+}
+
+.info-zone {
+    width: 20%;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 30px;
+    background-color: #d62b2b;
+    color: rgb(53, 35, 35);
+
+}
+
+.messages {
+    background-color: rgb(58, 60, 165);
+    width: 75%;
+    margin-left: 5%;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 30px;
+
+
+}
+
+.message-list {
+    background-color: rgb(58, 60, 165);
+    padding: 20px;
+    margin-bottom: 10px;
+    color: rgb(53, 35, 35);
+}
+
+.new-message {
+    margin-bottom: 10px; 
+    padding-bottom: 10px; 
+    border-bottom: 1px solid black; 
+}
+
+.message {
+    background-color:  rgb(29, 29, 29);
+    color: rgb(255, 255, 255);
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.pic {
+    width: 50px;
+}
+
+.logo {
+    font-style: oblique;
+    font-size: 30px;
+    color: rgb(255, 217, 0);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+input {
+    border-radius: 10px; /* Ajuste la valeur selon l'arrondi souhaité */
+    padding: 8px;
+    border: 1px solid #000000;
+}
+  
