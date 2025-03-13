@@ -15,8 +15,8 @@ const MainPage = () => {
   const [utilisateur, setUtilisateur] = useState(""); 
 
   // Fonction appelée après connexion pour définir l'utilisateur et passer à la page Asso
-  const connecterUtilisateur = (loginUtilisateur) => {
-    setUtilisateur(loginUtilisateur); // Enregistre le nom d'utilisateur
+  const connecterUtilisateur = (login) => {
+    setUtilisateur(login); // Enregistre le nom d'utilisateur
     setEstConnecte(true);             // Met l'état "connecté" à vrai
     setPageActuelle("page_asso");     // Redirige vers la page d'association
   };
