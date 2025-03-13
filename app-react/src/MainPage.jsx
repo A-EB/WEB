@@ -4,7 +4,7 @@ import Asso from "./composants/Asso";
 import NavigationPanel from "./composants/NavigationPanel";
 import Signin from "./composants/Signin";
 
-const PagePrincipale = () => {
+const MainPage = () => {
   // Page actuellement affichée (par défaut la page de login)
   const [pageActuelle, setPageActuelle] = useState("login"); 
 
@@ -53,4 +53,4 @@ const PagePrincipale = () => {
   );
 };
 
-export default PagePrincipale;
+export default MainPage;
