@@ -14,17 +14,35 @@ const Signin = () => {
   };
 
   // Fonction qui gère la soumission du formulaire
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault(); // Empêche le rechargement de la page
 
     // Vérifie si le mot de passe et sa confirmation sont identiques
     if (credentials.password !== credentials.confirmPassword) {
       setError("Les mots de passe ne correspondent pas"); // Affiche un message d'erreur si les mots de passe ne sont pas identiques
-    } else {
-      setError(""); // Réinitialise le message d'erreur
-      alert("Inscription réussie"); // Affiche une alerte pour confirmer l'inscription
     }
-  };
+    try{
+      const reponse = await fetch("http://localhost:8000/api/user", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          login: credentials.login,
+          password: credentials.password,}),
+        credentials: "include",
+      });
+      const data = await reponse.json();
+
+      if (reponse.ok) {
+        setMessage("Connexion réussie !");
+      } else {
+        setError(data.message || "Erreur de connexion");
+      }
+    } catch (err) {
+      setError("Erreur serveur");
+    }
+  }
 
   return (
     <form onSubmit={handleSubmit}>
