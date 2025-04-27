@@ -1,50 +1,44 @@
 import { useState } from "react";
-import "./MainPage.css";
-import Asso from "./composants/Asso";
+import Asso from "./composants/Pages/Asso";
 import NavigationPanel from "./composants/NavigationPanel";
 import Signin from "./composants/Signin";
+import Profil from "./composants/Pages/Profil";
+import "./MainPage.css";
 
 const MainPage = () => {
-  // Page actuellement affichée (par défaut la page de login)
-  const [pageActuelle, setPageActuelle] = useState("login"); 
+  const [pageActuelle, setPageActuelle] = useState("page_connexion"); // <-- corrigé ici
+  const [estConnecte, setEstConnecte] = useState(false);
+  const [utilisateur, setUtilisateur] = useState("");
 
-  // État de connexion de l'utilisateur (connecté ou non)
-  const [estConnecte, setEstConnecte] = useState(false); 
-
-  // Nom d'utilisateur de la personne connectée
-  const [utilisateur, setUtilisateur] = useState(""); 
-
-  // Fonction appelée après connexion pour définir l'utilisateur et passer à la page Asso
   const connecterUtilisateur = (login) => {
-    setUtilisateur(login); // Enregistre le nom d'utilisateur
-    setEstConnecte(true);             // Met l'état "connecté" à vrai
-    setPageActuelle("page_asso");     // Redirige vers la page d'association
+    setUtilisateur(login);
+    setEstConnecte(true);
+    setPageActuelle("page_asso"); // --> envoie vers "page_asso" juste après connexion
   };
 
-  // Fonction pour déconnecter l'utilisateur
   const deconnecterUtilisateur = () => {
-    setUtilisateur("");             // Efface le nom d'utilisateur
-    setEstConnecte(false);          // Met l'état "connecté" à faux
-    setPageActuelle("page_connexion"); // Redirige vers la page de connexion
+    setUtilisateur("");
+    setEstConnecte(false);
+    setPageActuelle("page_connexion");
   };
 
   return (
     <div>
-      {/* Affiche la page Asso uniquement si connecté */}
-      {pageActuelle === "page_asso" && estConnecte ? (
-        <Asso logout={deconnecterUtilisateur} user={utilisateur} />
-      ) : (
-        // Sinon affiche la page de connexion
+      {pageActuelle === "page_asso" && estConnecte && (
+        <Asso logout={deconnecterUtilisateur} user={utilisateur} setPageActuelle={setPageActuelle} />
+      )}
+      {pageActuelle === "page_profil" && estConnecte && (
+        <Profil user={utilisateur} setPageActuelle={setPageActuelle} />
+      )}
+      {(pageActuelle === "page_connexion" || !estConnecte) && (
         <div>
           <h1>Organiz-Asso</h1>
           <div className="container">
-            {/* Panneau de navigation avec gestion connexion/déconnexion */}
             <NavigationPanel
               login={connecterUtilisateur}
               logout={deconnecterUtilisateur}
               isConnected={estConnecte}
             />
-            {/* Formulaire de connexion */}
             <Signin />
           </div>
         </div>

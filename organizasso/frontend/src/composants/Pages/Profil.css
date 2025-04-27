@@ -1,0 +1,33 @@
+.btn-retour {
+    margin-top: 10px;
+    padding: 8px 12px;
+    background-color: #ffcc00;
+    color: black;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-retour:hover {
+    background-color: #ffdd33;
+  }
+  
+  .btn-supprimer {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-supprimer:hover {
+    background-color: darkred;
+  }
+
+  

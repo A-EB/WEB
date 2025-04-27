@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 
 const Login = ({ login }) => {
@@ -19,8 +18,13 @@ const Login = ({ login }) => {
       });
       const data = await response.json();
       if (response.ok) {
-        login(data.login);
-      } else {
+        if (data.isValidated) {
+          login(data.login);
+        } else {
+          alert("Votre compte n'est pas encore validé par un administrateur.");
+        }
+      }
+      else {
         alert(data.message || "Erreur d'identifiants");
       }
     } catch (err) {

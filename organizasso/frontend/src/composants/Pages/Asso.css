@@ -81,3 +81,66 @@ input {
     border: 1px solid #000000;
 }
   
+.info-zone {
+    width: 20%;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 30px;
+    background-color: #d62b2b;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.info-zone strong {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.info-zone ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+.info-zone li {
+    background-color: rgba(255, 255, 255, 0.1);
+    margin-bottom: 8px;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.info-zone input[type="checkbox"] {
+    transform: scale(1.2);
+}
+
+.info-zone button {
+    margin-top: 15px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 10px;
+    background-color: #ffcc00;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.info-zone button:hover {
+    background-color: #ffdd33;
+}
+
+.actions {
+    display: flex;
+    gap: 5px; /* Espace entre les boutons */
+}
+
+.info-zone li span {
+    white-space: nowrap;
+}
+

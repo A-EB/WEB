@@ -1,54 +1,58 @@
 import { useState } from "react";
 
 const Signin = () => {
-  // État pour stocker les informations saisies par l'utilisateur : login, mot de passe et confirmation du mot de passe
-  const [credentials, setCredentials] = useState({ login: "", password: "", confirmPassword: "" });
-
-  // État pour stocker un éventuel message d'erreur (ex : mots de passe différents)
+  const [credentials, setCredentials] = useState({ login: "", password: "", confirmPassword: "", isAdmin: false });
   const [error, setError] = useState("");
 
-  // Fonction qui gère les changements dans les champs du formulaire
-  // Met à jour l'état "credentials" selon le champ modifié
   const handleChange = (e) => {
-    setCredentials({ ...credentials, [e.target.name]: e.target.value });
+    const { name, value, type, checked } = e.target;
+    setCredentials({
+      ...credentials,
+      [name]: type === "checkbox" ? checked : value,
+    });
   };
 
-  // Fonction qui gère la soumission du formulaire
-  const handleSubmit = async(e) => {
-    e.preventDefault(); // Empêche le rechargement de la page
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    // Vérifie si le mot de passe et sa confirmation sont identiques
     if (credentials.password !== credentials.confirmPassword) {
-      setError("Les mots de passe ne correspondent pas"); // Affiche un message d'erreur si les mots de passe ne sont pas identiques
+      setError("Les mots de passe ne correspondent pas");
+      return;
     }
-    try{
-      const reponse = await fetch("http://localhost:8000/api/user", {
+
+    try {
+      const response = await fetch("http://localhost:8000/api/user", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           login: credentials.login,
-          password: credentials.password,}),
+          password: credentials.password,
+          isAdmin: credentials.isAdmin,
+          isValidated: false, // <-- ajout : par défaut non validé
+        }),
+        
         credentials: "include",
       });
-      const data = await reponse.json();
 
-      if (reponse.ok) {
-        setMessage("Connexion réussie !");
+      const data = await response.json();
+
+      if (!response.ok) {
+        setError(data.message || "Erreur d'inscription");
       } else {
-        setError(data.message || "Erreur de connexion");
+        setError("");
+        alert("Inscription réussie !");
+        // Optionally reset form here
+        // setCredentials({ login: "", password: "", confirmPassword: "", isAdmin: false });
       }
     } catch (err) {
-      setError("Erreur serveur");
+      setError("Erreur de connexion au serveur");
     }
-  }
+  };
 
   return (
     <form onSubmit={handleSubmit}>
       <h2>Inscription</h2>
 
-      {/* Champ pour saisir le login */}
       <input
         type="text"
         name="login"
@@ -57,7 +61,6 @@ const Signin = () => {
         onChange={handleChange}
       />
 
-      {/* Champ pour saisir le mot de passe */}
       <input
         type="password"
         name="password"
@@ -66,7 +69,6 @@ const Signin = () => {
         onChange={handleChange}
       />
 
-      {/* Champ pour confirmer le mot de passe */}
       <input
         type="password"
         name="confirmPassword"
@@ -75,10 +77,8 @@ const Signin = () => {
         onChange={handleChange}
       />
 
-      {/* Affichage du message d'erreur si présent */}
       {error && <p style={{ color: "red" }}>{error}</p>}
 
-      {/* Bouton pour soumettre le formulaire */}
       <button type="submit">S'inscrire</button>
     </form>
   );
