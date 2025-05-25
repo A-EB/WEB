@@ -53,41 +53,16 @@ git clone https://github.com/ton-pseudo/organizasso.git
 cd organizasso
 ```
 
-### 2. Installation du serveur
+### 2. COnfiguration du serveur et du client
 
 ```bash
-cd server
-npm install
-```
-
-Créer un fichier `.env` dans le dossier `server` avec les variables suivantes :
-
-```
-MONGODB_URI=your_mongo_uri
-JWT_SECRET=your_secret_key
-```
-
-Lancer le backend :
-
-```bash
-npm run dev
-```
-
-### 3. Installation du client
-
-```bash
-cd ../client
-npm install
+cd serveur
 npm start
 ```
 
-Le client est lancé sur `http://localhost:3000` et communique avec le serveur (port 5000 par défaut).
+Lancer le frontend :
 
-## ✍️ Auteurs
-
-- Projet réalisé dans le cadre d’un cours universitaire
-- Développé par [Votre Nom ou Équipe]
-
-## 📜 Licence
-
-Ce projet est sous licence MIT.
+```bash
+cd client
+npm run dev
+```
