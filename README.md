@@ -46,21 +46,21 @@ Organizasso/
 
 ## ⚙️ Installation locale
 
-### 1. Cloner le dépôt
+### 1. Cloner le dépôt :
 
 ```bash
 git clone https://github.com/ton-pseudo/organizasso.git
 cd organizasso
 ```
 
-### 2. COnfiguration du serveur et du client
+### 2. Configuration du serveur :
 
 ```bash
 cd serveur
 npm start
 ```
 
-Lancer le frontend :
+### 3. Lancer le frontend :
 
 ```bash
 cd client
