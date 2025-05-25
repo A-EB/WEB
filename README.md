@@ -1,7 +1,5 @@
 # Organiz’asso
 
-Organiz’asso est une plateforme web permettant aux membres d’une association de communiquer via des forums, avec un système de gestion des utilisateurs et des rôles (membres et administrateurs). Le site est construit avec **React** pour le frontend et **MongoDB** pour la base de données, avec une architecture en deux répertoires : `client/` (frontend) et `server/` (backend).
-
 ## 🔧 Technologies utilisées
 
 - **Frontend** : React, JavaScript, Axios, CSS
